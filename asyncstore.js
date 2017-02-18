@@ -330,7 +330,6 @@ Model.prototype.find = function () {
             var isMatch = false;
             for (var key in this._where) {
                 var val = this.traverse(rows[row], key, this._where[key]);
-                console.log(val);
                 if (val == true) {
                     isMatch = true;
                 } else {
