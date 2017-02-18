@@ -1,23 +1,10 @@
-![React Native DB Models](http://i58.tinypic.com/2akiqee.png) React Native DB Models
-===================
-![](https://travis-ci.org/darkrishabh/react-native-db-models.svg?branch=master) ![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)  [![npm version](https://badge.fury.io/js/react-native-db-models.svg)](http://badge.fury.io/js/react-native-db-models)
-----------
-
-
-This wrapper is built on top of [React Native Store](https://github.com/thewei/react-native-store) and provides a better and improved Database layer for asynchronous DB transactions.
-
-React Native DB Models fixes a lot of problems in react native store and also the DB class on top helps to provide more functionality and easy developing options.
-
-[![NPM](https://nodei.co/npm/react-native-db-models.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/react-native-db-models/)
-
-**New Feature added**
-DB Emitter added on all write operations to the models. Which helps you maintain a global storage and re-rendering capabilities for your app.
-
-Check the new documentation
+Based on work done by darkrishabh Local Databse Models for React Native Apps
 
 ----------
 Usage
 ======================
+
+Added better query search results and now it is possible to search any key:value pair independent of tree structure.
 
 The ideal way to use this library is to have a db.js in your applications somewhere. Which will be required.
 
