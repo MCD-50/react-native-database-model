@@ -312,8 +312,6 @@ Model.prototype.find = function () {
         hasParams = true;
     }
 
-    console.log(rows);
-
     if (hasParams) {
         for (var row in rows) {
             var isMatch = false;
