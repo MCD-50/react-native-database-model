@@ -1,4 +1,4 @@
-'use strict';
+
 
 var React = require('react-native');
 var Promise = require('promise-es6').Promise;
@@ -274,7 +274,7 @@ Model.prototype.add = function (data, callback) {
 Model.prototype.multiAdd = function (data, callback) {
     var self = this;
 
-    data.forEach(function(value, index){
+    data.forEach(function (value, index) {
         var autoinc = self.databaseData[self.tableName].autoinc;
         value._id = autoinc + index;
         self.databaseData[self.tableName].rows[autoinc] = value;
@@ -302,6 +302,19 @@ Model.prototype.get = function (id) {
     return this.find(1);
 }
 
+Model.prototype.traverse = function (o, key, value) {
+    for (var i in o) {
+        if (i == key && o[i] == value) {
+            return true;
+        }
+        if (o[i] !== null && typeof (o[i]) == "object") {
+            return this.traverse(o[i], key, value);
+        }
+    }
+
+}
+
+
 Model.prototype.find = function () {
 
     var results = [];
@@ -316,14 +329,15 @@ Model.prototype.find = function () {
         for (var row in rows) {
             var isMatch = false;
             for (var key in this._where) {
-                if (rows[row][key] == this._where[key]) {
+                var val = this.traverse(rows[row], key, this._where[key]);
+                console.log(val);
+                if (val == true) {
                     isMatch = true;
                 } else {
                     isMatch = false;
                     break;
                 }
             }
-
             if (isMatch) {
                 results.push(rows[row]);
             }
@@ -334,15 +348,15 @@ Model.prototype.find = function () {
         }
     }
 
-    if (typeof(this._limit) == 'number') {
+    if (typeof (this._limit) == 'number') {
         return results.slice(this._offset, this._limit + this._offset);
     } else {
         this.init();
         return results;
     }
-
-
 }
+
+
 
 
 module.exports = reactNativeStore;
