@@ -1,6 +1,6 @@
 {
   "name": "react-native-database-model",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Based on work done by darkrishabh Local Databse Models for React Native Apps",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,6 @@
     "promise-es6": "^0.1.0",
     "util": "^0.10.3"
   },
-  
   "devDependencies": {
     "babel-jest": "18.0.0",
     "babel-preset-react-native": "1.9.1",
