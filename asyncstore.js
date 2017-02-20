@@ -17,7 +17,6 @@ var Model = function (tableName, databaseData) {
     return this;
 };
 
-
 reactNativeStore.createDataBase = function () {
     var self = this;
     return new Promise(function (resolve, reject) {
@@ -132,11 +131,12 @@ Model.prototype.update = function (data, callback) {
     }
     if (hasParams) {
         for (var row in rows) {
-
-            var isMatch = true;
-
+            var isMatch = false;
             for (var key in this._where) {
-                if (rows[row][key] != this._where[key]) {
+                var val = this.traverse(rows[row], key, this._where[key]);
+                if (val == true) {
+                    isMatch = true;
+                } else {
                     isMatch = false;
                 }
             }
@@ -189,14 +189,16 @@ Model.prototype.remove = function (callback) {
     var counter = 0;
     if (hasParams) {
         for (var row in rows) {
-            var isMatch = true;
-
+            var isMatch = false;
             for (var key in this._where) {
-
-                if (rows[row][key] != this._where[key]) {
+                var val = this.traverse(rows[row], key, this._where[key]);
+                if (val == true) {
+                    isMatch = true;
+                } else {
                     isMatch = false;
                 }
             }
+
             if (isMatch) {
                 counter += 1;
                 deleted_ids.push(this.databaseData[this.tableName]["rows"][row]['_id']);
@@ -334,7 +336,6 @@ Model.prototype.find = function () {
                     isMatch = true;
                 } else {
                     isMatch = false;
-                    break;
                 }
             }
             if (isMatch) {
