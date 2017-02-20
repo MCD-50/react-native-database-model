@@ -1,6 +1,6 @@
 {
   "name": "react-native-database-model",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Based on work done by darkrishabh Local Databse Models for React Native Apps",
   "main": "index.js",
   "scripts": {
