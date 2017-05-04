@@ -1,5 +1,9 @@
 Based on work done by darkrishabh Local Databse Models for React Native Apps
 
+# Getting Started
+```bash
+$ npm i react-native-react-native-database-model --save
+
 ----------
 Usage
 ======================
